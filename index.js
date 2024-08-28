@@ -1,84 +1,81 @@
-document.getElementById("drink").addEventListener("change", function () {
-  const drink = this.value;
-  const drinkMessage = `Ви вибрали: ${drink}`;
-  document.getElementById("drinkMessage").textContent = drinkMessage;
-});
+// 1. Вибір напою з випадаючого списку
+var drink = prompt('Виберіть напій: 1 - Кава, 2 - Чай, 3 - Сік');
+var drinkMessage = '';
 
-document.getElementById("dayButton").addEventListener("click", function () {
-  const day = document.getElementById("dayInput").value.trim().toLowerCase();
-  let dayMessage = "";
-
-  switch (day) {
-    case "понеділок":
-    case "вівторок":
-    case "середа":
-    case "четвер":
-    case "п’ятниця":
-      dayMessage = `${
-        day.charAt(0).toUpperCase() + day.slice(1)
-      } - робочий день.`;
-      break;
-    case "субота":
-    case "неділя":
-      dayMessage = `${
-        day.charAt(0).toUpperCase() + day.slice(1)
-      } - вихідний день.`;
-      break;
+switch(drink) {
+    case '1':
+        drinkMessage = 'Ви вибрали Кава';
+        break;
+    case '2':
+        drinkMessage = 'Ви вибрали Чай';
+        break;
+    case '3':
+        drinkMessage = 'Ви вибрали Сік';
+        break;
     default:
-      dayMessage = "Невірний день тижня.";
-      break;
-  }
+        drinkMessage = 'Невірний вибір';
+}
 
-  document.getElementById("dayMessage").textContent = dayMessage;
-});
+alert(drinkMessage);
 
-document.getElementById("seasonButton").addEventListener("click", function () {
-  const month = parseInt(document.getElementById("monthInput").value);
-  let seasonMessage = "";
+// 2. Перевірка, чи введений рядок є днем тижня
+var day = prompt('Введіть день тижня:');
+var dayMessage = '';
 
-  switch (month) {
-    case 3:
-    case 4:
-    case 5:
-      seasonMessage = "Це весна.";
-      break;
-    case 6:
-    case 7:
-    case 8:
-      seasonMessage = "Це літо.";
-      break;
-    case 9:
-    case 10:
-    case 11:
-      seasonMessage = "Це осінь.";
-      break;
+switch(day.toLowerCase()) {
+    case 'понеділок':
+    case 'вівторок':
+    case 'середа':
+    case 'четвер':
+    case 'п’ятниця':
+        dayMessage = 'Це робочий день';
+        break;
+    case 'субота':
+    case 'неділя':
+        dayMessage = 'Це вихідний день';
+        break;
+    default:
+        dayMessage = 'Це не день тижня';
+}
+
+alert(dayMessage);
+
+// 3. Визначення пори року за номером місяця
+var month = parseInt(prompt('Введіть номер місяця (1-12):'));
+var seasonMessage = '';
+
+switch(month) {
     case 12:
     case 1:
     case 2:
-      seasonMessage = "Це зима.";
-      break;
-    default:
-      seasonMessage = "Невірний номер місяця.";
-      break;
-  }
-
-  document.getElementById("seasonMessage").textContent = seasonMessage;
-});
-
-document.getElementById("daysButton").addEventListener("click", function () {
-  const month = parseInt(document.getElementById("daysInput").value);
-  let daysMessage = "";
-
-  switch (month) {
-    case 2:
-      daysMessage = "У лютому 28 або 29 днів (у високосний рік).";
-      break;
+        seasonMessage = 'Це зима';
+        break;
+    case 3:
     case 4:
+    case 5:
+        seasonMessage = 'Це весна';
+        break;
     case 6:
+    case 7:
+    case 8:
+        seasonMessage = 'Це літо';
+        break;
     case 9:
+    case 10:
     case 11:
-      daysMessage = "У цьому місяці 30 днів.";
-      break;
+        seasonMessage = 'Це осінь';
+        break;
+    default:
+        seasonMessage = 'Невірний номер місяця';
+}
+
+alert(seasonMessage);
+
+// 4. Визначення кількості днів у місяці за його номером
+var monthDays = parseInt(prompt('Введіть номер місяця (1-12) для визначення кількості днів:'));
+var daysMessage = '';
+
+switch(monthDays) {
     case 1:
     case 3:
     case 5:
@@ -86,74 +83,68 @@ document.getElementById("daysButton").addEventListener("click", function () {
     case 8:
     case 10:
     case 12:
-      daysMessage = "У цьому місяці 31 день.";
-      break;
+        daysMessage = 'Цей місяць має 31 день';
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        daysMessage = 'Цей місяць має 30 днів';
+        break;
+    case 2:
+        daysMessage = 'Цей місяць має 28 або 29 днів';
+        break;
     default:
-      daysMessage = "Невірний номер місяця.";
-      break;
-  }
+        daysMessage = 'Невірний номер місяця';
+}
 
-  document.getElementById("daysMessage").textContent = daysMessage;
-});
+alert(daysMessage);
 
-document.getElementById("colorButton").addEventListener("click", function () {
-  const color = document
-    .getElementById("colorInput")
-    .value.trim()
-    .toLowerCase();
-  let colorMessage = "";
+// 5. Визначення дії за кольором
+var color = prompt('Введіть назву кольору (червоний, зелений, жовтий):').toLowerCase();
+var colorMessage = '';
 
-  switch (color) {
-    case "червоний":
-      colorMessage = "Стоп!";
-      break;
-    case "зелений":
-      colorMessage = "Йти!";
-      break;
-    case "жовтий":
-      colorMessage = "Чекати!";
-      break;
+switch(color) {
+    case 'червоний':
+        colorMessage = 'Стоп';
+        break;
+    case 'зелений':
+        colorMessage = 'Йти';
+        break;
+    case 'жовтий':
+        colorMessage = 'Чекати';
+        break;
     default:
-      colorMessage = "Невідомий колір.";
-      break;
-  }
+        colorMessage = 'Невідомий колір';
+}
 
-  document.getElementById("colorMessage").textContent = colorMessage;
-});
+alert(colorMessage);
 
-document
-  .getElementById("calculateButton")
-  .addEventListener("click", function () {
-    const num1 = parseFloat(document.getElementById("num1").value);
-    const num2 = parseFloat(document.getElementById("num2").value);
-    const operation = document.getElementById("operation").value;
-    let resultMessage = "";
+// 6. Виконання математичної операції між двома числами
+var num1 = parseFloat(prompt('Введіть перше число:'));
+var num2 = parseFloat(prompt('Введіть друге число:'));
+var operation = prompt('Виберіть операцію: +, -, *, /');
+var resultMessage = '';
 
-    if (isNaN(num1) || isNaN(num2)) {
-      resultMessage = "Введіть обидва числа.";
-    } else {
-      switch (operation) {
-        case "+":
-          resultMessage = `Результат: ${num1 + num2}`;
-          break;
-        case "-":
-          resultMessage = `Результат: ${num1 - num2}`;
-          break;
-        case "*":
-          resultMessage = `Результат: ${num1 * num2}`;
-          break;
-        case "/":
-          if (num2 === 0) {
-            resultMessage = "Помилка: ділення на нуль!";
-          } else {
-            resultMessage = `Результат: ${num1 / num2}`;
-          }
-          break;
-        default:
-          resultMessage = "Невідома операція.";
-          break;
-      }
-    }
+switch(operation) {
+    case '+':
+        resultMessage = 'Результат: ' + (num1 + num2);
+        break;
+    case '-':
+        resultMessage = 'Результат: ' + (num1 - num2);
+        break;
+    case '*':
+        resultMessage = 'Результат: ' + (num1 * num2);
+        break;
+    case '/':
+        if (num2 !== 0) {
+            resultMessage = 'Результат: ' + (num1 / num2);
+        } else {
+            resultMessage = 'Помилка: ділення на нуль неможливе';
+        }
+        break;
+    default:
+        resultMessage = 'Невідома операція';
+}
 
-    document.getElementById("resultMessage").textContent = resultMessage;
-  });
+alert(resultMessage);
